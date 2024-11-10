@@ -1,0 +1,14 @@
+helmDefaults:
+  tillerNamespace: app
+
+releases:
+  - name: hello-app
+    namespace: app
+    chart: ./hello-chart
+    values:
+      - values/{{ .Environment.Name }}.yaml
+      - secrets/{{ .Environment.Name }}.yaml
+
+environments:
+  dev:
+  stage:
